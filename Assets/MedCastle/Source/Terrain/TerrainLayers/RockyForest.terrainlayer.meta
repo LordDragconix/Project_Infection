@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 588730dc949cdbd408d821b87149397b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 308772
+  packageName: Medieval Castle (URP)
+  packageVersion: 1.0
+  assetPath: Assets/MedCastle/Source/Terrain/TerrainLayers/RockyForest.terrainlayer
+  uploadId: 726537

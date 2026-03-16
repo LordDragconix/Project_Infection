@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 613414457b300cd478afb1139ff7135c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 308772
+  packageName: Medieval Castle (URP)
+  packageVersion: 1.0
+  assetPath: Assets/MedCastle/Source/Terrain/TerrainLayers/BrownMud.terrainlayer
+  uploadId: 726537

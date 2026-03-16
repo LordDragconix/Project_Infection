@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: abc00000000011136811152578640330
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 308772
+  packageName: Medieval Castle (URP)
+  packageVersion: 1.0
+  assetPath: Assets/MedCastle/Prefabs/SM_Crane.prefab
+  uploadId: 726537

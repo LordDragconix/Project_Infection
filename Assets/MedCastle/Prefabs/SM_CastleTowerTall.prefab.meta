@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: abc00000000017945941438389874807
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 308772
+  packageName: Medieval Castle (URP)
+  packageVersion: 1.0
+  assetPath: Assets/MedCastle/Prefabs/SM_CastleTowerTall.prefab
+  uploadId: 726537

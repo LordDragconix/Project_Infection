@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a47156236c6c606438893e4c2cb3202f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 308772
+  packageName: Medieval Castle (URP)
+  packageVersion: 1.0
+  assetPath: Assets/MedCastle/Source/Terrain/TerrainLayers/GreenForest.terrainlayer
+  uploadId: 726537

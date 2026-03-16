@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 21bad6170a800bb458e0121b2ef92a60
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 15600000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 308772
+  packageName: Medieval Castle (URP)
+  packageVersion: 1.0
+  assetPath: Assets/MedCastle/Source/Terrain/New Terrain.asset
+  uploadId: 726537

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0c87d9756d7c9d04da2898151c85eb5e
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 308772
+  packageName: Medieval Castle (URP)
+  packageVersion: 1.0
+  assetPath: Assets/MedCastle/Prefabs/SM_TreeOak.prefab
+  uploadId: 726537

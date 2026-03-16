@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 43370fc123dc78c439940ee72f8e042e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 625f186215c104763be7675aa2d941aa, type: 3}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 308772
+  packageName: Medieval Castle (URP)
+  packageVersion: 1.0
+  assetPath: Assets/MedCastle/Source/DEXSOFTS MasterShaders/MasterPainterOpaque.shadergraph
+  uploadId: 726537
