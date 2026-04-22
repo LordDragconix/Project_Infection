@@ -20,14 +20,13 @@ public sealed class MatchCountdownTimer : NetworkBehaviour
 
     private bool _ended;
 
-    public override void OnNetworkSpawn()
+    public override void OnNetworkSpawn() { }
+
+    // Called by InfectionGameManager after initial infection completes.
+    public void StartMatchTimer()
     {
-        // Start timer once, server side
-        if (IsServer)
-        {
-            // Use server time so all clients are consistent
-            endTimeServer.Value = (float)NetworkManager.Singleton.ServerTime.Time + matchDurationSeconds;
-        }
+        if (!IsServer) return;
+        endTimeServer.Value = (float)NetworkManager.Singleton.ServerTime.Time + matchDurationSeconds;
     }
 
     private void Update()
