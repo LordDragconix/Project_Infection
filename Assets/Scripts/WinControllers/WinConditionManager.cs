@@ -1,4 +1,4 @@
-using TMPro;
+using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +13,7 @@ public sealed class WinConditionManager : NetworkBehaviour
 
     [Header("Scene")]
     [SerializeField] private string endSceneName = "EndScene";
+    [SerializeField] private float endSceneDelay = 8f;
 
     [Header("Rules")]
     [Tooltip("How often (seconds) the server checks for win conditions.")]
@@ -101,12 +102,14 @@ public sealed class WinConditionManager : NetworkBehaviour
 
         _winner.Value = (int)winner;
 
-        // Switch scene for everyone (server authoritative).
         if (!string.IsNullOrWhiteSpace(endSceneName))
-        {
-            // Netcode scene switch (clients follow automatically).
-            NetworkManager.Singleton.SceneManager.LoadScene(endSceneName, LoadSceneMode.Single);
-        }
+            StartCoroutine(LoadEndSceneAfterDelay());
+    }
+
+    private IEnumerator LoadEndSceneAfterDelay()
+    {
+        yield return new WaitForSeconds(endSceneDelay);
+        NetworkManager.Singleton.SceneManager.LoadScene(endSceneName, LoadSceneMode.Single);
     }
 
     private void SetWinUI(Winner winner)
