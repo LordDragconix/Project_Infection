@@ -26,6 +26,8 @@ public sealed class WinConditionManager : NetworkBehaviour
             NetworkVariableReadPermission.Everyone,
             NetworkVariableWritePermission.Server);
 
+    public bool GameOver => (Winner)_winner.Value != Winner.None;
+
     public override void OnNetworkSpawn()
     {
         // Ensure UI starts hidden (you said you will keep them disabled anyway).
@@ -36,7 +38,7 @@ public sealed class WinConditionManager : NetworkBehaviour
             SetWinUI((Winner)newValue);
         };
 
-        // Optional: if already in a win state when someone joins late, they’ll see it.
+        // Optional: if already in a win state when someone joins late, theyï¿½ll see it.
         SetWinUI((Winner)_winner.Value);
     }
 
@@ -74,7 +76,7 @@ public sealed class WinConditionManager : NetworkBehaviour
                 monsterPlayers++;
         }
 
-        // If nobody is connected, don’t declare a winner.
+        // If nobody is connected, donï¿½t declare a winner.
         if (connectedPlayers == 0) return;
 
         // All connected players are monsters => monsters win.

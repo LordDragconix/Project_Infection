@@ -35,6 +35,14 @@ public sealed class MatchCountdownTimer : NetworkBehaviour
     private void Update()
     {
         if (countdownTMP == null) return;
+
+        // Hide the timer as soon as the game is over.
+        if (winManager != null && winManager.GameOver)
+        {
+            countdownTMP.gameObject.SetActive(false);
+            return;
+        }
+
         if (endTimeServer.Value <= 0f) return;
 
         // Remaining time based on server clock (clients can compute locally)
