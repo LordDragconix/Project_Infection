@@ -8,6 +8,9 @@ public sealed class MatchCountdownTimer : NetworkBehaviour
     [SerializeField] private WinConditionManager winManager;
     [SerializeField] private TextMeshProUGUI countdownTMP;
 
+    // Shared with InfectionGameManager so both phases write to the same text object.
+    public TextMeshProUGUI CountdownDisplay => countdownTMP;
+
     [Header("Timer")]
     [Tooltip("Match length in seconds.")]
     [SerializeField] private int matchDurationSeconds = 180;

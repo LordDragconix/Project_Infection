@@ -23,7 +23,6 @@ public class InfectionGameManager : NetworkBehaviour
     [SerializeField] MatchCountdownTimer matchTimer;
 
     [Header("UI")]
-    [SerializeField] TextMeshProUGUI preGameCountdownTMP;
     [SerializeField] GameObject roleRevealObject;
     [SerializeField] TextMeshProUGUI roleRevealTMP;
     [SerializeField] float roleRevealDuration = 4f;
@@ -42,22 +41,22 @@ public class InfectionGameManager : NetworkBehaviour
         Instance = this;
     }
 
-    void OnEnable()
-    {
-        if (NetworkManager.Singleton != null)
-            NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
-    }
-
-    void OnDisable()
-    {
-        if (NetworkManager.Singleton != null)
-            NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;
-    }
-
     public override void OnNetworkSpawn()
     {
+        // Register AFTER the network is ready so NetworkManager.Singleton is never null.
+        if (IsServer)
+            NetworkManager.OnClientConnectedCallback += OnClientConnected;
+
         if (roleRevealObject != null) roleRevealObject.SetActive(false);
-        if (preGameCountdownTMP != null) preGameCountdownTMP.text = "Waiting for players...";
+
+        // Use the shared timer TMP for the waiting message on every client.
+        if (matchTimer != null && matchTimer.CountdownDisplay != null)
+            matchTimer.CountdownDisplay.text = "Waiting for players...";
+    }
+
+    public override void OnNetworkDespawn()
+    {
+        NetworkManager.OnClientConnectedCallback -= OnClientConnected;
     }
 
     void OnClientConnected(ulong clientId)
@@ -75,17 +74,24 @@ public class InfectionGameManager : NetworkBehaviour
 
     void Update()
     {
-        if (_preGameEndTime.Value > 0f && !roundStarted)
+        // Nothing to do until the countdown is set.
+        if (_preGameEndTime.Value <= 0f) return;
+
+        float now = (float)NetworkManager.Singleton.ServerTime.Time;
+        float remaining = _preGameEndTime.Value - now;
+
+        if (remaining > 0f)
         {
-            float now = (float)NetworkManager.Singleton.ServerTime.Time;
-            float remaining = Mathf.Max(0f, _preGameEndTime.Value - now);
-
-            if (preGameCountdownTMP != null)
-                preGameCountdownTMP.text = $"Game starts in: {Mathf.CeilToInt(remaining)}s";
-
-            if (IsServer && now >= _preGameEndTime.Value)
-                StartInitialInfection();
+            // Still counting down — all clients update the shared TMP.
+            if (matchTimer != null && matchTimer.CountdownDisplay != null)
+                matchTimer.CountdownDisplay.text = $"Game starts in: {Mathf.CeilToInt(remaining)}s";
         }
+        // Once remaining hits 0, this block stops touching the TMP and
+        // MatchCountdownTimer.Update() naturally takes over the same object.
+
+        // Server triggers infection as soon as the countdown expires.
+        if (IsServer && !roundStarted && remaining <= 0f)
+            StartInitialInfection();
     }
 
     void StartInitialInfection()
@@ -121,11 +127,10 @@ public class InfectionGameManager : NetworkBehaviour
             var playerObj = client.PlayerObject;
             if (playerObj == null) continue;
 
-            var t = playerObj.transform;
-            TurnHumanIntoCreature(id, t.position, t.rotation);
+            TurnHumanIntoCreature(id, playerObj.transform.position, playerObj.transform.rotation);
         }
 
-        // Tell each client their role
+        // Tell each client their role.
         foreach (var c in clients)
         {
             bool infected = infectedSet.Contains(c.ClientId);
@@ -135,8 +140,7 @@ public class InfectionGameManager : NetworkBehaviour
             });
         }
 
-        HideCountdownClientRpc();
-
+        // Kick off the main match timer — MatchCountdownTimer now owns the TMP.
         if (matchTimer != null) matchTimer.StartMatchTimer();
 
         Debug.Log($"[InfectionGameManager] Round started: {targetCreatures}/{total} infected.");
@@ -161,12 +165,6 @@ public class InfectionGameManager : NetworkBehaviour
         if (roleRevealTMP != null)
             roleRevealTMP.text = isInfected ? "You are Infected!" : "You are a Survivor!";
         StartCoroutine(HideRoleAfterDelay());
-    }
-
-    [ClientRpc]
-    void HideCountdownClientRpc()
-    {
-        if (preGameCountdownTMP != null) preGameCountdownTMP.gameObject.SetActive(false);
     }
 
     IEnumerator HideRoleAfterDelay()
