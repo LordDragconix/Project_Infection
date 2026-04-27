@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Networking\ClientNetworkTransform.cs" />
     <Compile Include="Assets\Scripts\Infection\CreatureMeleeAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerControlScripts\OwnerCamera.cs" />
+    <Compile Include="Assets\Scripts\PlayerControlScripts\PlayerSpawnGuard.cs" />
     <Compile Include="Assets\Scripts\Networking\SimpleLobbyManager.cs" />
     <Compile Include="Assets\Scripts\Networking\ClientNetworkAnimator.cs" />
     <Compile Include="Assets\Scripts\WinControllers\WinConditionManager.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Scripts\Networking\UGSBootstrap.cs" />
     <Compile Include="Assets\Scripts\PlayerControlScripts\Flashlight.cs" />
     <Compile Include="Assets\Scripts\PlayerControlScripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Menu\MainMenuManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
