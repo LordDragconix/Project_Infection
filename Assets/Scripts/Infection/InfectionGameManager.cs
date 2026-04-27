@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -23,8 +22,8 @@ public class InfectionGameManager : NetworkBehaviour
     [SerializeField] MatchCountdownTimer matchTimer;
 
     [Header("UI")]
-    [SerializeField] GameObject roleRevealObject;
-    [SerializeField] TextMeshProUGUI roleRevealTMP;
+    [SerializeField] GameObject survivorRevealObject;
+    [SerializeField] GameObject infectedRevealObject;
     [SerializeField] float roleRevealDuration = 4f;
 
     // > 0 once countdown is running; all clients read it to drive UI
@@ -47,7 +46,8 @@ public class InfectionGameManager : NetworkBehaviour
         if (IsServer)
             NetworkManager.OnClientConnectedCallback += OnClientConnected;
 
-        if (roleRevealObject != null) roleRevealObject.SetActive(false);
+        if (survivorRevealObject != null) survivorRevealObject.SetActive(false);
+        if (infectedRevealObject != null) infectedRevealObject.SetActive(false);
 
         // Use the shared timer TMP for the waiting message on every client.
         if (matchTimer != null && matchTimer.CountdownDisplay != null)
@@ -161,15 +161,14 @@ public class InfectionGameManager : NetworkBehaviour
     [ClientRpc]
     void ShowRoleClientRpc(bool isInfected, ClientRpcParams _ = default)
     {
-        if (roleRevealObject != null) roleRevealObject.SetActive(true);
-        if (roleRevealTMP != null)
-            roleRevealTMP.text = isInfected ? "You are Infected!" : "You are a Survivor!";
-        StartCoroutine(HideRoleAfterDelay());
+        GameObject toShow = isInfected ? infectedRevealObject : survivorRevealObject;
+        if (toShow != null) toShow.SetActive(true);
+        StartCoroutine(HideRoleAfterDelay(toShow));
     }
 
-    IEnumerator HideRoleAfterDelay()
+    IEnumerator HideRoleAfterDelay(GameObject obj)
     {
         yield return new WaitForSeconds(roleRevealDuration);
-        if (roleRevealObject != null) roleRevealObject.SetActive(false);
+        if (obj != null) obj.SetActive(false);
     }
 }
