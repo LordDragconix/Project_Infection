@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "C:\\InfiniverseGames\\Project_Infection\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{02560A92-7548-210C-DA6D-426B21C7094C}|Assembly-CSharp.csproj|c:\\infiniversegames\\project_infection\\assets\\scripts\\playercontrolscripts\\playerspawnguard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02560A92-7548-210C-DA6D-426B21C7094C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontrolscripts\\playerspawnguard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{02560A92-7548-210C-DA6D-426B21C7094C}|Assembly-CSharp.csproj|c:\\infiniversegames\\project_infection\\assets\\scripts\\wincontrollers\\matchtimerhumanwin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02560A92-7548-210C-DA6D-426B21C7094C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\wincontrollers\\matchtimerhumanwin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02560A92-7548-210C-DA6D-426B21C7094C}|Assembly-CSharp.csproj|c:\\infiniversegames\\project_infection\\assets\\scripts\\wincontrollers\\winconditionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{02560A92-7548-210C-DA6D-426B21C7094C}|Assembly-CSharp.csproj|C:\\InfiniverseGames\\Project_Infection\\assets\\scripts\\wincontrollers\\winconditionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{02560A92-7548-210C-DA6D-426B21C7094C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\wincontrollers\\winconditionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -47,6 +51,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PlayerSpawnGuard.cs",
+              "DocumentMoniker": "C:\\InfiniverseGames\\Project_Infection\\Assets\\Scripts\\PlayerControlScripts\\PlayerSpawnGuard.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerControlScripts\\PlayerSpawnGuard.cs",
+              "ToolTip": "C:\\InfiniverseGames\\Project_Infection\\Assets\\Scripts\\PlayerControlScripts\\PlayerSpawnGuard.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerControlScripts\\PlayerSpawnGuard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-27T05:40:31.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MatchTimerHumanWin.cs",
               "DocumentMoniker": "C:\\InfiniverseGames\\Project_Infection\\Assets\\Scripts\\WinControllers\\MatchTimerHumanWin.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\WinControllers\\MatchTimerHumanWin.cs",
@@ -59,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "WinConditionManager.cs",
               "DocumentMoniker": "C:\\InfiniverseGames\\Project_Infection\\Assets\\Scripts\\WinControllers\\WinConditionManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\WinControllers\\WinConditionManager.cs",
@@ -67,12 +84,11 @@
               "RelativeToolTip": "Assets\\Scripts\\WinControllers\\WinConditionManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-02T13:15:51.007Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-02T13:15:51.007Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MonsterMarker.cs",
               "DocumentMoniker": "C:\\InfiniverseGames\\Project_Infection\\Assets\\Scripts\\WinControllers\\MonsterMarker.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\WinControllers\\MonsterMarker.cs",
@@ -84,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Flashlight.cs",
               "DocumentMoniker": "C:\\InfiniverseGames\\Project_Infection\\Assets\\Scripts\\PlayerControlScripts\\Flashlight.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerControlScripts\\Flashlight.cs",
@@ -96,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "SimpleLobbyManager.cs",
               "DocumentMoniker": "C:\\InfiniverseGames\\Project_Infection\\Assets\\Scripts\\Networking\\SimpleLobbyManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Networking\\SimpleLobbyManager.cs",
@@ -108,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "UGSBootstrap.cs",
               "DocumentMoniker": "C:\\InfiniverseGames\\Project_Infection\\Assets\\Scripts\\Networking\\UGSBootstrap.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Networking\\UGSBootstrap.cs",
@@ -120,7 +136,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "OwnerMouseLook.cs",
               "DocumentMoniker": "C:\\InfiniverseGames\\Project_Infection\\Assets\\Scripts\\PlayerControlScripts\\OwnerMouseLook.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerControlScripts\\OwnerMouseLook.cs",
@@ -132,7 +148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "InfectionGameManager.cs",
               "DocumentMoniker": "C:\\InfiniverseGames\\Project_Infection\\Assets\\Scripts\\Infection\\InfectionGameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Infection\\InfectionGameManager.cs",

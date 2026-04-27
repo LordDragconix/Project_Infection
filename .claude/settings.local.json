@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"C:\\\\InfiniverseGames\\\\Project_Infection\" add Assets/Scripts/Infection/InfectionGameManager.cs)",
+      "Bash(git -C 'C:\\\\InfiniverseGames\\\\Project_Infection' commit -m ' *)"
+    ]
+  }
+}
