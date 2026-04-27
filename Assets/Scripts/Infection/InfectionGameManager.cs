@@ -17,6 +17,9 @@ public class InfectionGameManager : NetworkBehaviour
     [SerializeField] int minInitialCreatures = 1;
     [SerializeField] int minPlayersToStart = 2;
 
+    [Header("Spawn Points")]
+    [SerializeField] Transform[] spawnPoints;
+
     [Header("Pre-Game")]
     [SerializeField] float preGameDuration = 60f;
     [SerializeField] MatchCountdownTimer matchTimer;
@@ -42,9 +45,12 @@ public class InfectionGameManager : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        // Register AFTER the network is ready so NetworkManager.Singleton is never null.
         if (IsServer)
+        {
             NetworkManager.OnClientConnectedCallback += OnClientConnected;
+            // Reposition all players once the game scene has fully loaded on every client.
+            NetworkManager.SceneManager.OnLoadEventCompleted += OnSceneLoadCompleted;
+        }
 
         if (survivorRevealObject != null) survivorRevealObject.SetActive(false);
         if (infectedRevealObject != null) infectedRevealObject.SetActive(false);
@@ -57,6 +63,28 @@ public class InfectionGameManager : NetworkBehaviour
     public override void OnNetworkDespawn()
     {
         NetworkManager.OnClientConnectedCallback -= OnClientConnected;
+        NetworkManager.SceneManager.OnLoadEventCompleted -= OnSceneLoadCompleted;
+    }
+
+    void OnSceneLoadCompleted(string sceneName, UnityEngine.SceneManagement.LoadSceneMode mode,
+        System.Collections.Generic.List<ulong> completed, System.Collections.Generic.List<ulong> timedOut)
+    {
+        if (spawnPoints == null || spawnPoints.Length == 0) return;
+
+        // Only the host needs repositioning — clients spawn into the already-loaded scene correctly.
+        Vector3 pos = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
+        TeleportClientRpc(pos, new ClientRpcParams
+        {
+            Send = new ClientRpcSendParams { TargetClientIds = new[] { NetworkManager.ServerClientId } }
+        });
+    }
+
+    [ClientRpc]
+    void TeleportClientRpc(Vector3 position, ClientRpcParams _ = default)
+    {
+        var playerObj = NetworkManager.LocalClient?.PlayerObject;
+        if (playerObj != null)
+            playerObj.transform.position = position;
     }
 
     void OnClientConnected(ulong clientId)
